@@ -15,7 +15,7 @@
 }
 
 body {
-  background-image: url('../public/assets/backBola.png');
+  background-image: url('../assets/backBola.png');
   background-repeat: no-repeat;
   background-size: cover;
 }
