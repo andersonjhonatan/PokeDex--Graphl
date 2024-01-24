@@ -11,7 +11,7 @@ const Pokemons = () => {
 
   const { data, loading, error } = useQuery(GET_All_POKEMONS, {
     variables: {
-      limit: 100,
+      limit: 50,
       offset: 0,
     },
   })
@@ -38,7 +38,7 @@ const Pokemons = () => {
   }, [error, loading, data])
 
   return (
-    <div className="flex max-w-7xl mx-auto gap-5">
+    <div className="flex max-w-7xl mx-auto gap-5 mb-20">
       {carregando && <div>Carregando...</div>}
       <div className=" flex flex-col max-2xl:flex-auto  justify-between w-2/3 text-center mt-32 relative">
         <ParentComponent />
