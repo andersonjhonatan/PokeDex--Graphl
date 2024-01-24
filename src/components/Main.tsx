@@ -48,7 +48,7 @@ const Main = () => {
             mergulhe nas informações detalhadas sobre seus Pokémon favoritos.
           </p>
         </div>
-        <div className="flex-1 flex  items-center justify-center">
+        <div className="flex-1 mt-12 flex  items-center justify-center">
           {newPhoto && newPhoto.length > 0 && (
             <img
               src={
