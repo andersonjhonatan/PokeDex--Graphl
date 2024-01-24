@@ -13,7 +13,6 @@ const Navbar: FC = () => {
       <a href="/teste">Tesutando</a>
       <a href="/teste">Tesutando</a>
       <a href="/sobre">Sobre</a>
-      <a href="/footer">Footer</a>
     </div>
   )
 }
