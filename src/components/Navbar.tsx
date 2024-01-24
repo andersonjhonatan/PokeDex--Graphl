@@ -4,6 +4,7 @@ import { GiNestedHearts } from 'react-icons/gi'
 import { MdOutlineFrontHand } from 'react-icons/md'
 import { VscGithub } from 'react-icons/vsc'
 import { IoCodeSlashOutline } from 'react-icons/io5'
+import { GiRabbitHead } from 'react-icons/gi'
 
 const Navbar: FC = () => {
   return (
@@ -19,9 +20,12 @@ const Navbar: FC = () => {
             <a href="/">Home</a>
           </div>
 
-          <a className="font-semibold" href="/pokemons">
-            Pokémon
-          </a>
+          <div className="flex items-center gap-2">
+            <GiRabbitHead className="text-2xl" />
+            <a className="font-semibold" href="/pokemons">
+              Pokémon
+            </a>
+          </div>
 
           <a className="font-semibold" href="/teste">
             teste

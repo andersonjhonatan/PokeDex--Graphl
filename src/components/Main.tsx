@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { GET_All_POKEMONS } from '../graphql/queries/PokemonQueries'
 import { useQuery } from '@apollo/client'
 import { Pokemon } from '../interface/IPokemon'
+import { VscLoading } from 'react-icons/vsc'
 
 const Main = () => {
   const [newPhoto, setNewPhoto] = useState<Pokemon[] | []>([])
@@ -29,13 +30,17 @@ const Main = () => {
     return () => clearInterval(interval)
   }, [newPhoto])
 
-  if (loading) {
-    return 'Carregando...'
-  }
-
   if (error) {
     console.error('Erro ao obter pokemons:', error)
     return 'Erro ao obter pokemons'
+  }
+
+  if (loading) {
+    return (
+      <div className="w-full h-screen flex justify-center items-center">
+        <VscLoading className="text-5xl animate-spin text-red-400" />
+      </div>
+    )
   }
 
   return (
