@@ -4,7 +4,8 @@ import { useQuery } from '@apollo/client'
 import { Pokemon, PokemonType } from '../interface/IPokemon'
 import { TbLoaderQuarter } from 'react-icons/tb'
 import { MdOutlineCatchingPokemon } from 'react-icons/md'
-import { typeColors } from '../Record/TypeColors'
+import { typeColors, IconTypes } from '../Record/TypeColors'
+import SeachItem from './SeachItem'
 
 const Pokemons = () => {
   const [pokemons, setPokemons] = useState([])
@@ -18,11 +19,6 @@ const Pokemons = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      if (error) {
-        console.error('GraphQL Errors:', error)
-        return
-      }
-
       try {
         if (loading) {
           setCarregando(true)
@@ -40,45 +36,62 @@ const Pokemons = () => {
     fetchData()
   }, [error, loading, data])
 
-  const GetPhotoPokemons = (photo: string, photo2?: string) => {
+  const renderizarImagens = (photo: string, photo2?: string) => {
     return (
       <div className="relative">
         <MdOutlineCatchingPokemon className=" text-white/5  sticky -top-16 " size={90} />
 
         <img
           alt="pokemon"
-          className="h-20 w-20  absolute -top-14 z-10"
+          className="h-20 w-20  absolute -top-10 z-10"
           src={photo || photo2}
         />
       </div>
     )
   }
+  /* Função que renderiza as imagens dos pokemons */
 
-  const PokemonNamesTypes = (types: PokemonType[]) => {
+  const renderizarNameTipos = (types: PokemonType[]) => {
     const typesPokemon = types?.map((type: PokemonType) => type.pokemon_v2_type.name)
     return (
-      <div className="flex gap-2">
+      <div className="flex gap-2 p-4 justify-center">
         {typesPokemon.map((type: string) => (
-          <div key={type} className={`${typeColors[type] || typeColors.default}`}>
-            <p className="text-white/50">{type}</p>
+          <div
+            key={type}
+            className={`${
+              typeColors[type] || typeColors.default
+            } p-2 rounded-lg flex gap-1 items-baseline`}
+          >
+            <img
+              src={IconTypes[type] || IconTypes.default}
+              alt={type}
+              className="h-3 w-3"
+            />
+            <p className="text-white text-xs">
+              {type.toUpperCase().charAt(0) + type.slice(1)}
+            </p>
           </div>
         ))}
       </div>
     )
   }
+  /* Função que renderiza os tipos dos nomes de pokemons */
 
   return (
-    <div className=" flex justify-between max-w-6xl mx-auto text-center mt-40">
+    <div className=" flex flex-col justify-between max-w-7xl mx-auto text-center mt-32 border border-gray-500">
+      <SeachItem  />
+
       {carregando && (
         <TbLoaderQuarter className="animate-spin text-5xl w-full flex text-center text-amber-500" />
       )}
+
       <div className="grid  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full place-items-center cursor-pointer">
         {pokemons.map((pokemon: Pokemon) => (
           <div
             key={pokemon.id}
             className="mt-10 h-auto w-60 bg-[#051b1cf6] shadow-xl shadow-gray-800 rounded-3xl justify-center flex flex-col items-center relative hover:scale-105 transition-all duration-300"
           >
-            {GetPhotoPokemons(
+            {renderizarImagens(
               pokemon.pokemon_v2_pokemonsprites[0].sprites.other.dream_world
                 .front_default,
               pokemon.pokemon_v2_pokemonsprites[0].sprites.other.home.front_default
@@ -88,7 +101,7 @@ const Pokemons = () => {
               <h1 className="text-md text-white font-bold">
                 {pokemon.name.toUpperCase()}
               </h1>
-              {PokemonNamesTypes(pokemon.pokemon_v2_pokemontypes)}
+              {renderizarNameTipos(pokemon.pokemon_v2_pokemontypes)}
             </div>
           </div>
         ))}
