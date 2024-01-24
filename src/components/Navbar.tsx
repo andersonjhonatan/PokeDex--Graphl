@@ -3,16 +3,18 @@ import { MdOutlineCatchingPokemon } from 'react-icons/md'
 
 const Navbar: FC = () => {
   return (
-    <div className="bg-white  rounded-lg flex items-center justify-evenly max-w-6xl mx-auto p-7 m-8 shadow-lg shadow-slate-300">
-      <div className='flex items-center gap-2'>
-        <MdOutlineCatchingPokemon className="text-2xl " />
-        <a href="/">Home</a>
+    <div className="w-full flex justify-center">
+      <div className="bg-[#084d51da] text-white  rounded-lg flex items-center justify-evenly  w-screen  p-7 mt-7 max-w-7xl mx-auto shadow-lg shadow-gray-800 fixed top-0 z-20 ">
+        <div className="flex items-center gap-2">
+          <MdOutlineCatchingPokemon className="text-2xl " />
+          <a href="/">Home</a>
+        </div>
+        <a className='font-semibold' href="/pokemons">Pokémon</a>
+        <a className='font-semibold' href="/tvpokemon">TV Pokemon</a>
+        <a className='font-semibold' href="/teste"></a>
+        <a className='font-semibold' href="/news">News</a>
+        <a className='font-semibold' href="/sobre">Sobre</a>
       </div>
-      <a href="/pokemons">Pokemon</a>
-      <a href="/teste">Tesutando</a>
-      <a href="/teste">Tesutando</a>
-      <a href="/teste">Tesutando</a>
-      <a href="/sobre">Sobre</a>
     </div>
   )
 }

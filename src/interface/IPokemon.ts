@@ -11,6 +11,12 @@ export interface PokemonSprite {
   }
 }
 
+export interface PokemonType {
+  pokemon_v2_type: {
+    name: string
+  }
+}
+
 export interface Pokemon {
   base_experience: number
   height: number
@@ -18,4 +24,5 @@ export interface Pokemon {
   name: string
   weight: number
   pokemon_v2_pokemonsprites: PokemonSprite[]
+  pokemon_v2_pokemontypes: PokemonType[]
 }

@@ -1,8 +1,11 @@
 import { gql } from '@apollo/client'
 
-
 const GET_All_POKEMONS = gql`
-  query GetAllPokemons($offset: Int, $limit: Int, $orderBy: [pokemon_v2_pokemonsprites_order_by!]) {
+  query GetAllPokemons(
+    $offset: Int
+    $limit: Int
+    $orderBy: [pokemon_v2_pokemonsprites_order_by!]
+  ) {
     pokemon_v2_pokemon {
       order
       name
@@ -11,8 +14,14 @@ const GET_All_POKEMONS = gql`
       height
       base_experience
       weight
+
       pokemon_v2_pokemonsprites(offset: $offset, limit: $limit, order_by: $orderBy) {
         sprites
+      }
+      pokemon_v2_pokemontypes {
+        pokemon_v2_type {
+          name
+        }
       }
     }
   }
