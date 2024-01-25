@@ -11,7 +11,7 @@ const Navbar: FC = () => {
     <div className="w-full flex justify-center">
       <div className="bg-[#084d51da] text-white  rounded-lg flex items-center justify-between w-full  px-8 p-4 mt-7 max-w-7xl mx-auto shadow-lg shadow-gray-800 fixed top-0 z-20 ">
         <div className="flex">
-          <img src="../../public/assets/logo.png" alt="" className="w-24" />
+          <img src="../../assets/logo.png" alt="" className="w-24" />
         </div>
 
         <div className="flex gap-16">
@@ -33,7 +33,7 @@ const Navbar: FC = () => {
 
           <div className="flex items-center gap-2">
             <GiNestedHearts className="text-2xl" />
-            <a className="font-semibold" href="/news">
+            <a className="font-semibold" href="/favorite">
               Favorities
             </a>
           </div>

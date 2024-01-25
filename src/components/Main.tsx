@@ -14,11 +14,15 @@ const Main = () => {
     },
   })
 
+  /* Função que renderiza todos os pokemons   */
+
   useEffect(() => {
     if (data) {
       setNewPhoto(data.pokemon_v2_pokemon || [])
     }
   }, [data])
+
+  /* Função que renderiza as imagens dos pokemons aleatórios de tempo em tempo */
 
   useEffect(() => {
     const interval = setInterval(() => {
