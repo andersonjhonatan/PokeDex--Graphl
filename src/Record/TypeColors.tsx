@@ -29,3 +29,12 @@ export const IconTypes: Record<string, string> = {
   psychic: 'https://img.icons8.com/ios-filled/50/000000/psychic.png',
   default: 'https://img.icons8.com/ios-filled/50/000000/question-mark.png',
 }
+
+
+export const TypesSelection: Record<string, string> = {
+  type: 'Type',
+  height: 'Height',
+  weight: 'Weight',
+  ability: 'Ability',
+  weaknesses: 'Weaknesses',
+}

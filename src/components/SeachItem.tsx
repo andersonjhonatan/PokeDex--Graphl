@@ -3,6 +3,7 @@ import { GET_POKEMON_BY_NAME } from '../graphql/queries/PokemonQueries'
 import { MdOutlineCatchingPokemon } from 'react-icons/md'
 import { useQuery } from '@apollo/client'
 import { pokemonDataVar } from '../graphql/ApolloClient/apolloMemory'
+import Filtered from './Filtered'
 
 const SeachItem: FC = () => {
   const [value, setValue] = useState('')
@@ -45,6 +46,7 @@ const SeachItem: FC = () => {
             size={25}
           />
         </button>
+        <Filtered />
       </form>
     </>
   )
