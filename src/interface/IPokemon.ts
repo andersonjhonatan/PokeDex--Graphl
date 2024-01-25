@@ -34,11 +34,14 @@ export interface Pokemon {
   weight: number
   pokemon_v2_pokemonsprites: PokemonSprite[]
   pokemon_v2_pokemontypes: PokemonType[]
-  pokemon_v2_pokemonabilities: {
-    pokemon_v2_ability: {
-      name: string
+  pokemon_v2_pokemonabilities: [
+    {
+      pokemon_v2_ability: {
+        name: string
+      }
     }
-  }[]
+  ]
+   
 }
 
 export interface DetailPokemon {

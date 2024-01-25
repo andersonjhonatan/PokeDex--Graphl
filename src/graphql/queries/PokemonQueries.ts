@@ -28,6 +28,11 @@ const GET_All_POKEMONS = gql`
           name
         }
       }
+      pokemon_v2_pokemonabilities {
+        pokemon_v2_ability {
+          name
+        }
+      }
     }
   }
 `
@@ -48,6 +53,11 @@ const GET_POKEMON_BY_NAME = gql`
       }
       pokemon_v2_pokemontypes {
         pokemon_v2_type {
+          name
+        }
+      }
+      pokemon_v2_pokemonabilities {
+        pokemon_v2_ability {
           name
         }
       }

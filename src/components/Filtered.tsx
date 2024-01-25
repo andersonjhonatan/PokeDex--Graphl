@@ -1,22 +1,28 @@
 import { useForm, SubmitHandler, Controller } from 'react-hook-form'
 import { FormData } from '../interface/IFormData'
-import { useReactiveVar } from '@apollo/client'
-import { pokemonDataVar } from '../graphql/ApolloClient/apolloMemory'
+import { Pokemon } from '../interface/IPokemon'
 
-/* 
-* Este component sera paa a filtragem do pokemon
-* O componente de filtragem recebera os dados do formulario
-* com isso estou usando o react-hook-form
-*/
+/*
+ * Este component sera paa a filtragem do pokemon
+ * O componente de filtragem recebera os dados do formulario
+ * com isso estou usando o react-hook-form
+ */
 
-const Filtered = () => {
-  const pokemonData = useReactiveVar(pokemonDataVar)
-  console.log(pokemonData)
+const Filtered = ({ pokemos }: { pokemos: Pokemon[] }) => {
   const { control, handleSubmit } = useForm<FormData>()
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
     console.log(data)
   }
+
+  /* filtrando as abilities para as option */
+
+  const ability = pokemos.map((pokemon) => {
+    return pokemon.pokemon_v2_pokemonabilities[0].pokemon_v2_ability.name
+  })
+
+  /* esse new set serve para remover os duplicados */
+  const uniqueAbility = [...new Set(ability)]
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex rounded-lg mt-3 gap-4">
@@ -49,7 +55,12 @@ const Filtered = () => {
               <option value="" disabled>
                 Weight
               </option>
-              <option value="2">Option 2</option>
+              {pokemos &&
+                pokemos.map((pokemon) => (
+                  <option key={pokemon.id} value={pokemon.id}>
+                    {pokemon.weight}
+                  </option>
+                ))}
             </select>
           )}
         />
@@ -66,7 +77,12 @@ const Filtered = () => {
                 Type
               </option>
               <option value="2">Option 2</option>
-              {/* Aqui irei colocar os tipos chamando da api */}
+              {pokemos &&
+                pokemos.map((pokemon) => (
+                  <option key={pokemon.id} value={pokemon.id}>
+                    {pokemon.pokemon_v2_pokemontypes[0].pokemon_v2_type.name}
+                  </option>
+                ))}
             </select>
           )}
         />
@@ -82,7 +98,8 @@ const Filtered = () => {
               <option value="" disabled>
                 Ability
               </option>
-              <option value="2">Option 2</option>
+              {pokemos &&
+                uniqueAbility.map((ability) => <option key={ability}>{ability}</option>)}
             </select>
           )}
         />

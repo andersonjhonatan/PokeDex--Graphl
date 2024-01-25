@@ -4,7 +4,6 @@ import { useQuery } from '@apollo/client';
 import { MdOutlineCatchingPokemon } from 'react-icons/md';
 import { pokemonDataVar } from '../graphql/ApolloClient/apolloMemory';
 import { GET_POKEMON_BY_NAME } from '../graphql/queries/PokemonQueries';
-import Filtered from './Filtered';
 
 interface FormDataSearch {
   pokemonName: string;
@@ -51,7 +50,6 @@ const SeachItem: FC = () => {
             size={25}
           />
         </button>
-        <Filtered />
       </form>
     </>
   );

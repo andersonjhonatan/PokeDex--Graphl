@@ -5,6 +5,7 @@ import { GET_All_POKEMONS } from '../graphql/queries/PokemonQueries'
 import ParentComponent from './SeaarItemParente'
 import DetailsPokemon from './DetailsPokemon'
 import { VscLoading } from 'react-icons/vsc'
+import Filtered from './Filtered'
 
 const Pokemons = () => {
   const [pokemons, setPokemons] = useState([])
@@ -39,8 +40,9 @@ const Pokemons = () => {
 
   return (
     <div className="flex max-w-7xl mx-auto gap-5 mb-20">
-      <div className=" flex flex-col max-2xl:flex-auto  justify-between w-2/3 text-center mt-32 relative">
+      <div className=" flex flex-col max-2xl:flex-auto  justify-between w-2/3 text-center mt-32 relative gap-12">
         <ParentComponent />
+        <Filtered pokemos={pokemons} />
 
         <PokemonCard pokemos={pokemons} />
       </div>

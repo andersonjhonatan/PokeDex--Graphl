@@ -50,7 +50,7 @@ const PokemonCard = ({ pokemos }: { pokemos: Pokemon[] }) => {
   const renderizarPokemon = ({ id, name, pokemon_v2_pokemonsprites, pokemon_v2_pokemontypes }: Pokemon) => (
     <div
       key={id}
-      className="mt-12 h-auto w-48 bg-[#051b1cf6] shadow-xl shadow-gray-800 rounded-3xl justify-center flex flex-col items-center relative hover:scale-105 transition-all duration-300"
+      className="mt-6 h-auto w-48 bg-[#051b1cf6] shadow-xl shadow-gray-800 rounded-3xl justify-center flex flex-col items-center relative hover:scale-105 transition-all duration-300"
       onClick={() => pokemonIDVar(id)}
     >
       {renderizarImagens(
@@ -70,7 +70,7 @@ const PokemonCard = ({ pokemos }: { pokemos: Pokemon[] }) => {
   */
 
   return (
-    <div className="grid mt-32 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full place-items-center cursor-pointer">
+    <div className="grid  sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full place-items-center cursor-pointer">
       {pokemonData
         ? (pokemonData as Pokemon[]).map((pokemon: Pokemon) => renderizarPokemon(pokemon))
         : pokemos.map((pokemon: Pokemon) => renderizarPokemon(pokemon))}
