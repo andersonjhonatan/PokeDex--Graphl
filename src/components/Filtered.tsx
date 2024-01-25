@@ -1,5 +1,7 @@
 import { useForm, SubmitHandler, Controller } from 'react-hook-form'
 import { FormData } from '../interface/IFormData'
+import { useReactiveVar } from '@apollo/client'
+import { pokemonDataVar } from '../graphql/ApolloClient/apolloMemory'
 
 /* 
 * Este component sera paa a filtragem do pokemon
@@ -8,6 +10,8 @@ import { FormData } from '../interface/IFormData'
 */
 
 const Filtered = () => {
+  const pokemonData = useReactiveVar(pokemonDataVar)
+  console.log(pokemonData)
   const { control, handleSubmit } = useForm<FormData>()
 
   const onSubmit: SubmitHandler<FormData> = (data) => {
@@ -62,7 +66,7 @@ const Filtered = () => {
                 Type
               </option>
               <option value="2">Option 2</option>
-              {/* Add other options as needed */}
+              {/* Aqui irei colocar os tipos chamando da api */}
             </select>
           )}
         />
