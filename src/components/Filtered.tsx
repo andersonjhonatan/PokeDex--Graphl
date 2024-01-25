@@ -1,6 +1,12 @@
 import { useForm, SubmitHandler, Controller } from 'react-hook-form'
 import { FormData } from '../interface/IFormData'
 
+/* 
+* Este component sera paa a filtragem do pokemon
+* O componente de filtragem recebera os dados do formulario
+* com isso estou usando o react-hook-form
+*/
+
 const Filtered = () => {
   const { control, handleSubmit } = useForm<FormData>()
 

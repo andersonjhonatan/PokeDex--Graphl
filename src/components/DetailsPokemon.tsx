@@ -4,6 +4,7 @@ import { GET_POKEMON_BY_ID } from '../graphql/queries/PokemonQueries'
 import { pokemonIDVar } from '../graphql/ApolloClient/apolloMemory'
 import { Pokemon } from '../interface/IPokemon'
 import { RenderizarNameTipos } from '../constant/RenderizarTipos'
+import { VscLoading } from 'react-icons/vsc'
 
 const DetailsPokemon = () => {
   const [pokemoId, setpokemoId] = useState(0)
@@ -24,13 +25,21 @@ const DetailsPokemon = () => {
     setPokemonData(pokemon)
   }, [data, newPokemonId])
 
+  if (loading) {
+    return (
+      <div className="mt-72 flex justify-center text-center  w-96">
+        <VscLoading className="text-5xl animate-spin text-red-400" />
+      </div>
+    )
+  }
+
   return (
     <div
       className={`flex flex-col ${
         pokemonData && pokemonData.length <= 0 ? 'mt-32' : 'mt-60'
       } bg-[#051b1cf6] flex-auto shadow-xl shadow-gray-800 rounded-3xl`}
     >
-      {loading && <div>Loading...</div>}
+      
       <div>
         {pokemonData && pokemonData.length <= 0 && (
           <h1 className="text-2xl text-white font-bold p-8 m-16 flex text-center items-center justify-center bg-[#084d51da] rounded-full mt-32 h-72 animate-pulse shadow-md shadow-slate-400">
@@ -73,13 +82,13 @@ const DetailsPokemon = () => {
                   <div className="flex flex-col gap-2 justify-center items-center">
                     <p className="text-white font-bold">Height</p>
                     <p className="text-white font-bold bg-slate-900 px-9 py-1 rounded-lg">
-                      {pokemon.height}
+                      {pokemon.height} Cm
                     </p>
                   </div>
                   <div className="flex flex-col gap-2 items-center">
                     <p className="text-white font-bold">Weight</p>
                     <p className="text-white font-bold bg-slate-900 px-9 py-1 rounded-lg">
-                      {pokemon.weight}
+                      {pokemon.weight} Kg
                     </p>
                   </div>
                   <div className="flex flex-col gap-2 items-center">

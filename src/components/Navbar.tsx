@@ -26,11 +26,6 @@ const Navbar: FC = () => {
               Pokémon
             </a>
           </div>
-
-          <a className="font-semibold" href="/teste">
-            teste
-          </a>
-
           <div className="flex items-center gap-2">
             <GiNestedHearts className="text-2xl" />
             <a className="font-semibold" href="/favorite">

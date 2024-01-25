@@ -1,7 +1,4 @@
 import { InMemoryCache, makeVar } from '@apollo/client'
-
-
-
 const pokemonDataVar = makeVar(null)
 const pokemonIDVar= makeVar<number>(0)
 const pokemonFavoriteVar = makeVar<number[]>([])

@@ -1,4 +1,4 @@
-import PokemonService from '../services/PokemonsService'
+import PokemonService from '../service/PokemonsService'
 
 class PokemonRepository {
   async getAllPokemons() {

@@ -1,8 +1,9 @@
 import client from '../ApolloClient'
 import { GET_All_POKEMONS, GET_POKEMON_BY_NAME } from '../queries/PokemonQueries'
+import { ResponseAllPokemons } from '../../interface/IResponseAllPokemon'
 
 class PokemonService {
-  async getAllPokemons() {
+  async getAllPokemons(): Promise<ResponseAllPokemons> {
     try {
       const response = await client.query({
         query: GET_All_POKEMONS,
@@ -15,8 +16,10 @@ class PokemonService {
         throw new Error('Error in GraphQL query')
       }
 
-      const pokemons = data?.pokemon_v2_pokedex || []
-      return { loading: false, error: null, pokemons }
+      if (data && data.pokemon_v2_pokedex) {
+        return { loading: false, error: null, pokemons: data.pokemon_v2_pokedex }
+      }
+      throw new Error('Invalid data structure in response')
     } catch (error) {
       console.error('Error:', error)
       return { loading: false, error, pokemons: [] }
@@ -42,6 +45,10 @@ class PokemonService {
       }
 
       const pokemon = data?.pokemon_v2_pokemon[0] || []
+
+      if (!pokemon) {
+        throw new Error('Pokemon not found')
+      }
 
       return { loading: false, error: null, pokemon }
     } catch (error) {
