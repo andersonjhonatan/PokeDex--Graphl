@@ -30,10 +30,10 @@ const PokemonCard = ({ pokemos }: { pokemos: Pokemon[] }) => {
         </div>
         <div className="absolute top-2 right-2  ">
           <button
-            className={`rounded-full p-1 hover:bg-red-500 hover:text-white
+            className={`rounded-full p-1 hover:bg-red-500 hover:text-white bg-white text-rose-600
               `}
           >
-            <CiHeart size={30} />
+            <CiHeart size={20} />
           </button>
         </div>
       </div>
