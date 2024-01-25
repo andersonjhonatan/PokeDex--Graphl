@@ -6,6 +6,11 @@ import { VscGithub } from 'react-icons/vsc'
 import { IoCodeSlashOutline } from 'react-icons/io5'
 import { GiRabbitHead } from 'react-icons/gi'
 
+
+/* 
+* Sei que exite o navlink e link mas em nenhum deles funcionou 
+* por isso estou usando a tag a
+*/
 const Navbar: FC = () => {
   return (
     <div className="w-full flex justify-center">
@@ -45,7 +50,7 @@ const Navbar: FC = () => {
           <a href="https://portfolio-seven-flax-47.vercel.app/" target="_blank">
             <IoCodeSlashOutline size={30} className="" />
           </a>
-          <a href="https://github.com/andersonjhonatan">
+          <a href="https://github.com/andersonjhonatan/PokeDex--Graphl">
             <VscGithub size={25} />
           </a>
         </div>

@@ -9,8 +9,8 @@ O ash do Código - Pokedex é uma aplicação que permite explorar informações
 
 ## Capturas de Tela
 
-<!-- ![main](https://github.com/andersonjhonatan/Weather/blob/main/src/assets/project/Captura%20de%20tela%20de%202023-11-18%2002-26-20.png?raw=true)
-![home](https://github.com/andersonjhonatan/Weather/blob/main/src/assets/project/Captura%20de%20tela%20de%202023-11-18%2002-26-33.png?raw=true) -->
+![main](https://github.com/andersonjhonatan/PokeDex--Graphl/blob/main/public/assets/home.png?raw=true)
+![home](https://github.com/andersonjhonatan/PokeDex--Graphl/blob/main/public/assets/pokemon.png?raw=true)
 
 ## Como Usar
 
