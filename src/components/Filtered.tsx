@@ -15,14 +15,23 @@ const Filtered = ({ pokemos }: { pokemos: Pokemon[] }) => {
     console.log(data)
   }
 
+  const type = (pokemon: Pokemon[]) => {
+    return pokemon.map((pokemon) => {
+      return pokemon.pokemon_v2_pokemontypes[0].pokemon_v2_type.name
+    })
+  }
+  const uniqueType = [...new Set(type(pokemos))]
+
   /* filtrando as abilities para as option */
 
-  const ability = pokemos.map((pokemon) => {
-    return pokemon.pokemon_v2_pokemonabilities[0].pokemon_v2_ability.name
-  })
+  const abilityOptions = (ability: Pokemon[]) => {
+    return ability.map(
+      (ability) => ability.pokemon_v2_pokemonabilities[0].pokemon_v2_ability.name
+    )
+  }
 
   /* esse new set serve para remover os duplicados */
-  const uniqueAbility = [...new Set(ability)]
+  const uniqueAbility = [...new Set(abilityOptions(pokemos))]
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex rounded-lg mt-3 gap-4">
@@ -76,13 +85,7 @@ const Filtered = ({ pokemos }: { pokemos: Pokemon[] }) => {
               <option value="" disabled>
                 Type
               </option>
-              <option value="2">Option 2</option>
-              {pokemos &&
-                pokemos.map((pokemon) => (
-                  <option key={pokemon.id} value={pokemon.id}>
-                    {pokemon.pokemon_v2_pokemontypes[0].pokemon_v2_type.name}
-                  </option>
-                ))}
+              {pokemos && uniqueType.map((type) => <option key={type}>{type}</option>)}
             </select>
           )}
         />
