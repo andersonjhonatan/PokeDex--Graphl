@@ -1,7 +1,6 @@
 export interface FormData {
+  search: string
   type: string
-  height: string
-  weight: string
   ability: string
-  weaknesses: string
+  sort: 'id-asc' | 'id-desc' | 'name-asc' | 'name-desc'
 }

@@ -2,22 +2,19 @@ export interface PokemonSprite {
   sprites: {
     other: {
       dream_world: {
-        front_default: string
+        front_default: string | null
       }
       home: {
-        front_default: string
+        front_default: string | null
       }
     }
   }
 }
 
-export interface PokemonHability {
-  pokemon_v2_pokemonabilities: {
-    pokemon_v2_ability: {
-      name: string
-    }
+export interface PokemonAbility {
+  pokemon_v2_ability: {
+    name: string
   }
-  
 }
 
 export interface PokemonType {
@@ -34,18 +31,5 @@ export interface Pokemon {
   weight: number
   pokemon_v2_pokemonsprites: PokemonSprite[]
   pokemon_v2_pokemontypes: PokemonType[]
-  pokemon_v2_pokemonabilities: [
-    {
-      pokemon_v2_ability: {
-        name: string
-      }
-    }
-  ]
-   
-}
-
-export interface DetailPokemon {
-  pokemon_v2_pokemonabilities: PokemonHability[]
-
-
+  pokemon_v2_pokemonabilities: PokemonAbility[]
 }
