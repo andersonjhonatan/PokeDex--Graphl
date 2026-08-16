@@ -1,15 +1,13 @@
+import { useEffect } from 'react'
 import RoutesApp from './Routes/Routes'
-import Footer from './components/Footer'
-import Navbar from './components/Navbar'
+import { hydrateFavorites } from './utils/favorites'
 
 function App() {
-  return (
-    <>
-      <Navbar />
-      <RoutesApp />
-      <Footer />
-    </>
-  )
+  useEffect(() => {
+    hydrateFavorites()
+  }, [])
+
+  return <RoutesApp />
 }
 
 export default App

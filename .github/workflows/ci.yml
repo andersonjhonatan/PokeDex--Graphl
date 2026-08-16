@@ -1,0 +1,55 @@
+name: Quality Check
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload preview build
+        uses: actions/upload-artifact@v4
+        with:
+          name: pokedex-preview-dist
+          path: dist
+          if-no-files-found: error
+
+      - name: Prepare preview assets
+        if: github.event_name == 'pull_request' && github.head_ref == 'agent/pokedex-2026-rebuild'
+        run: |
+          for file in dist/assets/index-*.js; do
+            sed -i 's|/assets/logo.png|https://cdn.jsdelivr.net/gh/andersonjhonatan/PokeDex--Graphl@preview-dist/assets/logo.png|g' "$file"
+          done
+
+      - name: Publish preview files
+        if: github.event_name == 'pull_request' && github.head_ref == 'agent/pokedex-2026-rebuild'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: preview-dist
+          publish_dir: ./dist
+          force_orphan: true

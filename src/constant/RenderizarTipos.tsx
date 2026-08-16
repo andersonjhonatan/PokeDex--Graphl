@@ -1,27 +1,24 @@
-import { IconTypes, typeColors } from '../Record/TypeColors'
+import { typeColors } from '../Record/TypeColors'
 import { PokemonType } from '../interface/IPokemon'
 
-export const RenderizarNameTipos = (types: PokemonType[]) => {
-  const typesPokemon = types?.map((type: PokemonType) => type.pokemon_v2_type.name)
-  return (
-    <div className="flex gap-2 justify-center">
-      {typesPokemon.map((type: string) => (
-        <div
-          key={type}
-          className={`${
-            typeColors[type] || typeColors.default
-          } p-2 rounded-lg flex gap-1 items-baseline`}
-        >
-          <img
-            src={IconTypes[type] || IconTypes.default}
-            alt={type}
-            className="h-3 w-3"
-          />
-          <p className="text-white text-xs">
-            {type.toUpperCase().charAt(0) + type.slice(1)}
-          </p>
-        </div>
-      ))}
-    </div>
-  )
+interface TypeBadgesProps {
+  types: PokemonType[]
+  align?: 'start' | 'center'
 }
+
+export const RenderizarNameTipos = ({ types, align = 'center' }: TypeBadgesProps) => (
+  <div className={`flex flex-wrap gap-2 ${align === 'start' ? 'justify-start' : 'justify-center'}`}>
+    {types.map((type) => {
+      const name = type.pokemon_v2_type.name
+
+      return (
+        <span
+          key={name}
+          className={`${typeColors[name] || typeColors.default} rounded-full border px-3 py-1 text-[11px] font-semibold capitalize tracking-wide`}
+        >
+          {name}
+        </span>
+      )
+    })}
+  </div>
+)
