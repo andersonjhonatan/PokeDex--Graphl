@@ -27,3 +27,10 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Upload preview build
+        uses: actions/upload-artifact@v4
+        with:
+          name: pokedex-preview-dist
+          path: dist
+          if-no-files-found: error
