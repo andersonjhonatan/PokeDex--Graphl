@@ -1,30 +1,4 @@
-import { InMemoryCache, makeVar } from '@apollo/client'
-const pokemonDataVar = makeVar(null)
-const pokemonIDVar= makeVar<number>(0)
-const pokemonFavoriteVar = makeVar<number[]>([])
+import { makeVar } from '@apollo/client'
 
-export { pokemonDataVar, pokemonIDVar, pokemonFavoriteVar }
-
-export const cache = new InMemoryCache({
-  typePolicies: {
-    Query: {
-      fields: {
-        pokemonData: {
-          read() {
-            return pokemonDataVar()
-          },
-        },
-        pokemonID: {
-          read() {
-            return pokemonIDVar();
-          },
-        },
-        pokemonFavorite: {
-          read() {
-            return pokemonFavoriteVar();
-          },
-        }
-      },
-    },
-  },
-})
+export const pokemonIDVar = makeVar<number>(0)
+export const pokemonFavoriteVar = makeVar<number[]>([])
