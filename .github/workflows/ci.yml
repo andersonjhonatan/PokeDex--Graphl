@@ -38,6 +38,13 @@ jobs:
           path: dist
           if-no-files-found: error
 
+      - name: Prepare preview assets
+        if: github.event_name == 'pull_request' && github.head_ref == 'agent/pokedex-2026-rebuild'
+        run: |
+          for file in dist/assets/index-*.js; do
+            sed -i 's|/assets/logo.png|https://cdn.jsdelivr.net/gh/andersonjhonatan/PokeDex--Graphl@preview-dist/assets/logo.png|g' "$file"
+          done
+
       - name: Publish preview files
         if: github.event_name == 'pull_request' && github.head_ref == 'agent/pokedex-2026-rebuild'
         uses: peaceiris/actions-gh-pages@v4
